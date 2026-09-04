@@ -592,6 +592,86 @@
             font-size: 0.9rem;
         }
 
+        /* Skills + Experience Side-by-Side Layout */
+        .skills-experience-layout {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: start;
+        }
+
+        .skills-experience-layout > section {
+            padding: 100px 0;
+        }
+
+        .skills-experience-layout .container {
+            width: 100%;
+            max-width: none;
+            padding: 0;
+        }
+
+        .skills-experience-layout .section-title {
+            margin-bottom: 40px;
+        }
+
+        .skills-experience-layout .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .skills-experience-layout .experience-timeline {
+            max-width: none;
+            padding-left: 0;
+        }
+
+        .skills-experience-layout .experience-timeline::before {
+            left: 18px;
+            transform: none;
+        }
+
+        .skills-experience-layout .timeline-item,
+        .skills-experience-layout .timeline-item:nth-child(odd),
+        .skills-experience-layout .timeline-item:nth-child(even) {
+            width: calc(100% - 55px);
+            left: 55px;
+        }
+
+        .skills-experience-layout .timeline-item::before,
+        .skills-experience-layout .timeline-item:nth-child(odd)::before,
+        .skills-experience-layout .timeline-item:nth-child(even)::before {
+            left: -50px;
+            right: auto;
+        }
+
+        .current-role {
+            border: 1px solid rgba(78, 205, 196, 0.5);
+        }
+
+        .current-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            margin-bottom: 12px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Work Experience Section */
+        #work-experience {
+            position: relative;
+        }
+
+        #work-experience .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         /* Experience Section */
         .experience-timeline {
             position: relative;
@@ -671,6 +751,26 @@
         .timeline-item p {
             color: rgba(255, 255, 255, 0.7);
             font-size: 1rem;
+        }
+
+        /* Remove timeline line and circle only from Work Experience */
+        #work-experience .experience-timeline::before {
+            display: none;
+        }
+
+        #work-experience .timeline-item::before,
+        #work-experience .timeline-item:nth-child(odd)::before,
+        #work-experience .timeline-item:nth-child(even)::before {
+            display: none;
+        }
+
+        #work-experience .timeline-item,
+        #work-experience .timeline-item:nth-child(odd),
+        #work-experience .timeline-item:nth-child(even) {
+            left: 0;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Achievements Section */
@@ -789,6 +889,8 @@
 
         .contact-text a:hover {
             color: var(--primary);
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         .social-links {
@@ -887,6 +989,21 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1100px) {
+            .skills-experience-layout {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .skills-experience-layout > section {
+                padding: 80px 0;
+            }
+
+            .skills-experience-layout .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
@@ -993,8 +1110,9 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
+                    <li><a href="#work-experience">Work Experience</a></li>
+                    <li><a href="#experience">Internship Experience</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1009,7 +1127,7 @@
                 <div class="hero-text">
                     <h1>Nishali M</h1>
                     <h2><span class="typewriter">UI/UX Designer & Developer</span></h2>
-                    <p>Aspiring Software Developer and Final Year B.Tech Information Technology student, passionate about designing user-centric solutions, coding, and solving real-world problems.</p>
+                    <p>Graduate in Bachelor of Engineering in Information Technology, passionate about UI/UX design, frontend development, and creating user-centric digital experiences.</p>
                     <div>
                         <a href="#contact" class="btn">Hire Me</a>
                         <a href="#projects" class="btn btn-outline">View My Work</a>
@@ -1022,7 +1140,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <div class="container">
             <div class="section-title">
@@ -1032,33 +1149,82 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Hello, I'm Nishali M!</h3>
-                    <p>Aspiring Software Developer and Final Year B.Tech Information Technology student, passionate about designing user-centric solutions, coding, and solving real-world problems.</p>
-                    <p>I'm eager to contribute to innovative development projects by applying programming skills, logical thinking, and a strong foundation in software engineering. Seeking job opportunities to gain hands-on experience and enhance technical proficiency in a dynamic development environment.</p>
-                    
-                    <div class="education">
-                        <h3>Education</h3>
-                        <div class="education-item">
-                            <h4>Bachelor of Information Technology</h4>
-                            <p>PSNACET | Nov 2022 - Present</p>
-                            <p>CGPA: 7.94/10 (Upto Fifth Semester)</p>
-                        </div>
-                        <div class="education-item">
-                            <h4>Higher Secondary Certificate (HSC)</h4>
-                            <p>St. Antony's Hr. Sec. School | Jun 2021 - May 2022</p>
-                            <p>Percentage: 69%</p>
-                        </div>
-                        <div class="education-item">
-                            <h4>Secondary School Leaving Certificate (SSLC)</h4>
-                            <p>St. Antony's Hr. Sec. School | Jun 2020 - Apr 2021</p>
-                            <p>Percentage: 63%</p>
-                        </div>
-                    </div>
+                    <p>I am a Graduate in Bachelor of Engineering in Information Technology, passionate about UI/UX design, frontend development, and creating user-centric digital experiences.</p>
+                    <p>I enjoy combining design thinking with technical skills to build intuitive, visually appealing, and practical digital solutions. I am currently working as a UI/UX Designer at Karka.ai, where I contribute to user-focused design and web experiences.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+                <p>My academic background and qualifications</p>
+            </div>
+            <div class="education">
+                <div class="education-item">
+                    <h4>Bachelor of Information Technology</h4>
+                    <p>PSNACET | Nov 2022 - May 2026</p>
+                    <p>CGPA: 8.13/10</p>
+                </div>
+                <div class="education-item">
+                    <h4>Higher Secondary Certificate (HSC)</h4>
+                    <p>St. Antony's Hr. Sec. School | Jun 2021 - May 2022</p>
+                    <p>Percentage: 69%</p>
+                </div>
+                <div class="education-item">
+                    <h4>Secondary School Leaving Certificate (SSLC)</h4>
+                    <p>St. Antony's Hr. Sec. School | Jun 2020 - Apr 2021</p>
+                    <p>Percentage: 63%</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <section id="work-experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+                <p>My current professional experience</p>
+            </div>
+            <div class="experience-timeline">
+                <div class="timeline-item current-role">
+                    <span class="current-badge">CURRENT</span>
+                    <h3>UI/UX Designer</h3>
+                    <h4>Karka.ai | Dindigul</h4>
+                    <p>August 2026 - Present</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Internship Experience</h2>
+                <p>My professional journey and practical experience</p>
+            </div>
+            <div class="experience-timeline">
+
+                <div class="timeline-item">
+                    <h3>Java-Fullstack Web Developer</h3>
+                    <h4>Algorian Software Solutions | Dindigul</h4>
+                    <p>Jun 2025 - Jul 2025</p>
+                    <p>Developed and maintained fullstack web applications using Java technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>UI/UX Designer</h3>
+                    <h4>Codsoft | West Bengal</h4>
+                    <p>Aug 2024 - Sep 2024</p>
+                    <p>Designed intuitive user interfaces and engaging user experiences for web and mobile applications. Created wireframes, prototypes, and conducted user testing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="skills">
         <div class="container">
             <div class="section-title">
@@ -1124,39 +1290,14 @@
                         <div class="skill-tag"><i class="fas fa-certificate"></i> UI/UX Design</div>
                         <div class="skill-tag"><i class="fas fa-certificate"></i> MongoDB</div>
                         <div class="skill-tag"><i class="fas fa-certificate"></i> HTML, CSS, Javascript</div>
-                        
+                        <div class="skill-tag"><i class="fas fa-database"></i> SQL for Data Analysis</div>
+                        <div class="skill-tag"><i class="fas fa-cloud"></i> Fundamentals of DevOps on AWS</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-title">
-                <h2>Internship Experience</h2>
-                <p>My professional journey and practical experience</p>
-            </div>
-            <div class="experience-timeline">
-                <div class="timeline-item">
-                    <h3>Java-Fullstack Web Developer</h3>
-                    <h4>Algorian Software Solutions | Dindigul</h4>
-                    <p>Jun 2025 - Jul 2025</p>
-                    <p>Developed and maintained fullstack web applications using Java technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <h3>UI/UX Designer</h3>
-                    <h4>Codsoft | West Bengal</h4>
-                    <p>Aug 2024 - Sep 2024</p>
-                    <p>Designed intuitive user interfaces and engaging user experiences for web and mobile applications. Created wireframes, prototypes, and conducted user testing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
     <section id="achievements">
         <div class="container">
             <div class="section-title">
@@ -1186,8 +1327,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+<section id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Me</h2>
@@ -1210,8 +1350,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Email</h3>
-                            <p>nishalim030@gmail.com</p>
+                            <h3>Gmail</h3>
+                            <a href="mailto:nishalim030@gmail.com">nishalim030@gmail.com</a>
                         </div>
                     </div>
                     
@@ -1244,9 +1384,9 @@
                             
                             <div class="social-links">
                                 
-                                <a href="https://github.com/Nishali-M-07"><i class="fab fa-github-alt"></i></a>
-                                <a href="https://www.instagram.com/nishali_m_?igsh=MWxnbzBzcTllbDVvcA=="><i class="fab fa-instagram"></i></a>
-                                <a href="https://linkedin.com/in/nishalimitsudentug26"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Nishali-M-07" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github-alt"></i></a>
+                                <a href="https://www.instagram.com/nishali_m_?igsh=MWxnbzBzcTllbDVvcA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://linkedin.com/in/nishalimitsudentug26" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1255,104 +1395,4 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="footer-logo">Nishali.M</a>
-                <p>UI/UX Designer & Developer</p>
-                
-                <ul class="footer-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                
-                <div class="copyright">
-                    <p>&copy; 2025 Nishali M. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section-title, .about-content, .skill-card, .timeline-item, .achievement-card, .contact-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-            
-            el.classList.add('animated');
-            setTimeout(() => {
-                if (el.classList.contains('animated')) {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            }, 100);
-        });
-
-        // Typewriter effect
-        const typewriterText = document.querySelector('.typewriter');
-        const professions = ['UI/UX Designer', 'Frontend Developer', 'Fullstack Developer', 'Software Engineer'];
-        let index = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        
-        function typeEffect() {
-            const currentText = professions[index];
-            
-            if (!isDeleting) {
-                typewriterText.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                
-                if (charIndex === currentText.length) {
-                    isDeleting = true;
-                    setTimeout(typeEffect, 2000);
-                    return;
-                }
-            } else {
-                typewriterText.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    index = (index + 1) % professions.length;
-                }
-            }
-            
-            setTimeout(typeEffect, isDeleting ? 50 : 150);
-        }
-        
-        // Start the typewriter effect
-        setTimeout(typeEffect, 1000);
-    </script>
-</body>
-</html>
+>
